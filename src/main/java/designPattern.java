@@ -1,3 +1,6 @@
+import FactoryPattern.Laptop;
+import FactoryPattern.LaptopFactory;
+import FactoryPattern.LaptopType;
 import Singleton.Singleton;
 
 import java.lang.reflect.Constructor;
@@ -29,5 +32,17 @@ public class designPattern {
         System.out.println("S2 : "+s2);
         System.out.println("S3 : "+s3break);
         System.out.println(s1.equals(s2));
+
+        /*
+        * Factory Pattern Example
+        * */
+        System.out.println("******* Factory Pattern Example *******");
+        Laptop hp= LaptopFactory.getLaptop(LaptopType.HP);
+        Laptop mac=LaptopFactory.getLaptop(LaptopType.MAC);
+        System.out.println(hp.getConfiguration());
+        System.out.println(hp.toString());
+        System.out.println(mac.getConfiguration());
+        System.out.println(mac.toString());
+
     }
 }
