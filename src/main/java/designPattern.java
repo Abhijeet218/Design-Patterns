@@ -1,3 +1,9 @@
+import AbstractFactory.AbstractFactory;
+import AbstractFactory.OSType;
+import AbstractFactory.Phones;
+import AbstractFactory.ManufactureType;
+import AbstractFactory.OSFactory;
+import BuilderPattern.Phone;
 import FactoryPattern.Laptop;
 import FactoryPattern.LaptopFactory;
 import FactoryPattern.LaptopType;
@@ -43,6 +49,29 @@ public class designPattern {
         System.out.println(hp.toString());
         System.out.println(mac.getConfiguration());
         System.out.println(mac.toString());
+
+        /*
+        *  Builder Pattern Example
+        * */
+        System.out.println("******* Builder Pattern Example *******");
+        Phone.Builder builder = new Phone.Builder()
+                .camera("20MP")
+                .processor("AMD");
+
+        Phone phone= builder.build();
+        System.out.println(phone.toString());
+
+        /*
+        * Abstract Factory pattern
+        * */
+        System.out.println("******* Abstract-Factory Pattern Example *******");
+        OSFactory osFactory = AbstractFactory.getFactory(OSType.ANDORID);
+        Phones phones = osFactory.create(ManufactureType.GOOGLE);
+        phones.create();
+
+        OSFactory osFactoryW = AbstractFactory.getFactory(OSType.WINDOWS);
+        Phones phonesW = osFactoryW.create(ManufactureType.SAMSUNG);
+        phonesW.create();
 
     }
 }
